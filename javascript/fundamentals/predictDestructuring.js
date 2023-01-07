@@ -47,7 +47,7 @@ const { key } = lastTest;
 const { secondKey } = lastTest;
 const [ ,willThisWork] = secondKey;
 //Predict the output
-console.log(key);
-console.log(secondKey);
-console.log(secondKey[0]);
-console.log(willThisWork);
+console.log(key); // logs 'value'
+console.log(secondKey); // logs [1, 5, 1, 8, 3, 3]
+console.log(secondKey[0]); // logs 1
+console.log(willThisWork); // logs 5

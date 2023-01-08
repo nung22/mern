@@ -29,15 +29,29 @@ const pkmnIdsDivBy3 = pokémon.filter( p => p.id % 3 === 0 );
 console.log(pkmnIdsDivBy3);
 
 // an array of pokémon objects that are "fire" type
+const firePkmn = pokémon.filter( p => p.types.includes("fire") );
+console.log(firePkmn);
 
 // an array of pokémon objects that have more than one type
+const multiTypePkmn = pokémon.filter( p => p.types.length > 1 );
+console.log(multiTypePkmn);
 
 // an array with just the names of the pokémon
+const pkmnNames = pokémon.map( p => p.name );
+console.log(pkmnNames);
 
 // an array with just the names of pokémon with an id greater than 99
+const pkmnIdsOver99 = pokémon.filter( p => p.id > 99 ).map( p=> p.name)
+console.log(pkmnIdsOver99);
 
 // an array with just the names of the pokémon whose only type is poison
+const poisonPkmnNames = pokémon.filter( p =>  p.types.includes("poison") && p.types.length === 1 ).map( p => p.name );
+console.log(poisonPkmnNames);
 
 // an array containing just the first type of all the pokémon whose second type is "flying"
+const otherTypeFlyingPkmn = pokémon.filter( p => p.types[1] === ("flying") ).map( p => p.types[0] );
+console.log(otherTypeFlyingPkmn);
 
 // a count of the number of pokémon that are "normal" type
+const numNormalPkmn = pokémon.filter( p => p.types.includes("normal") ).length;
+console.log(numNormalPkmn);

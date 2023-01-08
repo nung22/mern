@@ -7,23 +7,45 @@ class Ninja {
     }
 
     sayName() {
-        console.log(`My name is ${this.name}!\n`);
+        console.log(`My name is ${this.name}!`);
     }
 
     showStats() {
         console.log(`Ninja Stats\n==============`)
         console.log(`Name: ${this.name}\nStrength: ${this.strength}`)
-        console.log(`Speed: ${this.speed}\nHealth: ${this.health}\n`)
+        console.log(`Speed: ${this.speed}\nHealth: ${this.health}`)
     }
 
     drinkSake() {
         this.health += 10;
-        console.log(`${this.name} drank a bottle of sake and now has ${this.health} Health!\n`);
+        console.log(`${this.name} drank a bottle of sake and now has ${this.health} Health!`);
+    }
+}
+
+class Sensei extends Ninja {
+    constructor(name) {
+        super(name);
+        this.health = 200;
+        this.speed = 10;
+        this.strength = 10;
+        this.wisdom = 10;
+    }
+
+    showStats() {
+        super.showStats();
+        console.log(`Wisdom: ${this.wisdom}`)
+    }
+
+    speakWisdom() {
+        super.drinkSake();
+        console.log(`\"A week of coding can save you a few hours of planning.\" -${this.name}`)
     }
 }
 
 //! Tests
-const ninja1 = new Ninja("Hyabusa");
-ninja1.sayName();
-ninja1.showStats();
-ninja1.drinkSake();
+const superSensei = new Sensei("Master Splinter");
+superSensei.sayName();
+console.log()
+superSensei.speakWisdom();
+console.log()
+superSensei.showStats();

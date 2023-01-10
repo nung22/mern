@@ -12,19 +12,29 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   font-size: calc(2vmin);
   color: white;
 }
 
 form {
-  width: fit-content;
+  width: 26rem;
   padding-left: 5rem;
 }
-label {
-  margin: 1rem 0 .3rem 0;
+.form-group {
+  background-color: rgb(87, 89, 92);
+  padding: .7rem;
+  margin-top: 3rem;
+  border-radius: .6rem;
 }
-
+label {
+  margin-bottom: .3rem;
+}
+p {
+  margin-left: .5rem;
+  margin-top: .3rem;
+  font-size: calc(1.4vmin);
+}
+/* 
 table {
   font-size: calc(1.3vmin);
   min-height: 13vh;
@@ -41,5 +51,4 @@ th {
 }
 td {
   text-align: left;
-  /* padding-left: 2.5rem; */
-}
+} */

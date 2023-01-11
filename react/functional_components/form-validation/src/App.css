@@ -17,7 +17,7 @@ body {
 }
 
 form {
-  width: 26rem;
+  width: 29rem;
   padding-left: 5rem;
 }
 .form-group {
@@ -29,7 +29,8 @@ form {
 label {
   margin-bottom: .3rem;
 }
-p {
+.error {
+  color:rgb(226, 108, 108);
   margin-left: .5rem;
   margin-top: .3rem;
   font-size: calc(1.4vmin);

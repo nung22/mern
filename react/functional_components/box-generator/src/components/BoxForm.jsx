@@ -18,9 +18,11 @@ export default function BoxForm(props) {
   return (
     <form onSubmit={handleAdd} className="flex gap-3 items-center">
       <h1>Color</h1>
+      {/* copies box object, then sets boxColor property to input */}
       <input type="text" placeholder="Type here" className="input w-32 input-bordered" 
         onChange={ e => setBox({...box, boxColor: e.target.value})} />
       <h1>Side Length (in px)</h1>
+      {/* copies box object, then sets boxLength property to input */}
       <input type="text" placeholder="Type here" className="input w-32 input-bordered" 
         onChange={ e => setBox({...box, sideLength: e.target.value})} />
       <input className="btn btn-sm btn-primary" type="submit" value="Add"/>

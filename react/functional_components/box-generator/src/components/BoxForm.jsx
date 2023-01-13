@@ -9,7 +9,10 @@ export default function BoxForm(props) {
   const handleAdd = e => {
     e.preventDefault();
     props.onNewBox(box)
+    // clears text from inputs
     e.target.reset();
+    // resets box color and side length
+    setBox({boxColor: '', sideLength: ''})
   };
     
   return (
@@ -20,7 +23,7 @@ export default function BoxForm(props) {
       <h1>Side Length (in px)</h1>
       <input type="text" placeholder="Type here" className="input w-32 input-bordered" 
         onChange={ e => setBox({...box, sideLength: e.target.value})} />
-      <input className="btn" type="submit" value="Add" />
+      <input className="btn" type="submit" value="Add"/>
     </form>
   );
 };

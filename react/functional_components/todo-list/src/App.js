@@ -11,7 +11,7 @@ const App = () => {
   });
 
   // store current todo list in the 'TASKS' key of the localStorage to persist
-  // the data when the browser refereshes
+  // the data when the browser refreshes
   useEffect(() => {
     localStorage.setItem('TASKS', JSON.stringify(tasks));
   }, [tasks]);

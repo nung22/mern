@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState, state } from 'react';
+import React, { useState } from 'react';
 import BoxForm from './components/BoxForm';
 import BoxDisplay from './components/BoxDisplay';
 
@@ -11,7 +11,7 @@ function App() {
   }
   
   return (
-      <div className='App p-10'>
+      <div className='p-10 flex flex-col items-center'>
           <BoxForm onNewBox={ newBoxAdded } />
           <BoxDisplay Boxes={ boxes } />
       </div>

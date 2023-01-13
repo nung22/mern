@@ -2,7 +2,7 @@ import React from 'react';
 
 const BoxDisplay = (props) => {
   return ( 
-      <div className="flex flex-wrap gap-8 mt-8 w-7/12">
+      <div style = {{ width:'33rem' }} className="flex flex-wrap gap-4 mt-8">
           { props.Boxes.map( item => 
               <div style={{ 
                 backgroundColor: `${item.boxColor}`,

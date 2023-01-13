@@ -1,13 +1,23 @@
 import './App.css';
 import AddTask from './components/AddTask'
 import DisplayTasks from './components/DisplayTasks'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
+const App = () => {
+  // assigns the state variable tasks any data that is stored under the 'TASKS'
+  // key of the localStorage, otherwise initialize the variable as an empty list
+  const [tasks, setTasks] = useState(() => {
+    return JSON.parse(localStorage.getItem('TASKS')) || [];
+  });
 
-function App() {
-  const [tasks, setTasks] = useState([]);
+  // store current todo list in the 'TASKS' key of the localStorage to persist
+  // the data when the browser refereshes
+  useEffect(() => {
+    localStorage.setItem('TASKS', JSON.stringify(tasks));
+  }, [tasks]);
 
   const newTaskAdded = (newTask) => {
+    // add a new task to the current to-do list
     setTasks([...tasks, newTask]);
   }
 
@@ -20,7 +30,7 @@ function App() {
           ...item,
           completed: !item.completed
         }
-      } 
+      }
       return item
     })
     setTasks(updatedTasks);

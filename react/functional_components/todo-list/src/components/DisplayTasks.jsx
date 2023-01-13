@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
-
 const DisplayTasks = (props) => {
   return (
     <div className='flex flex-col gap-1 mt-4'>
       { props.tasks.map( (item,i) => 
           <div key={i} className="form-control">
             <label className="cursor-pointer label w-fit flex gap-3">
-              <span className="label-text text-lg">{item.description}</span>
+              <span className={`label-text text-lg ${item.completed ?'line-through':''}`}>{item.description}</span>
               <input type="checkbox" checked={item.completed} className="checkbox checkbox-warning"
               onChange={e => props.onTaskUpdate(i)}/>
               <button className="btn btn-circle btn-outline btn-error btn-xs"

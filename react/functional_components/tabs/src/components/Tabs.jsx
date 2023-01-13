@@ -1,15 +1,18 @@
 import React from 'react';
 
-const BoxDisplay = (props) => {
+export default function Tabs(props) {
+  const tabNums = [1,2,3,4];
+
+  const handleChange = e => {
+    e.preventDefault();
+    props.onTabSwitch(e.target.value);
+  };
+
   return ( 
-      <div className="flex gap-8 mt-8 w-7/12">
-          { props.Boxes.map( item => 
-              <div style={{ 
-                backgroundColor: `${item.boxColor}`,
-                height:`${item.sideLength}px`,
-                width: `${item.sideLength}px` }}></div> ) }
-      </div>
+    <div className="btn-group">
+      {tabNums.map( (item, i) =>
+        <input key={i} type="radio" name="options" data-title={item} className="btn" 
+          onClick={ () => console.log(item) }/> )}
+  </div>
   ); 
 };
-
-export default BoxDisplay;

@@ -1,0 +1,10 @@
+// Request 1
+https://pokeapi.co/api/v2/pokemon/magikarp
+// Request 2
+https://pokeapi.co/api/v2/pokemon/bulbasaur
+// Request 3
+https://pokeapi.co/api/v2/pokemon/chikorita
+// Request 4
+https://pokeapi.co/api/v2/pokemon/treecko
+// Request 5
+https://pokeapi.co/api/v2/pokemon/turtwig

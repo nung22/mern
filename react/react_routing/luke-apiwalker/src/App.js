@@ -1,23 +1,33 @@
-import logo from './logo.svg';
+import greeting from './assets/hello-there.jpg';
 import './App.css';
+import {
+  Routes,
+  Route
+} from "react-router-dom";
+import React, { useState } from 'react';
+import DisplayInfo from './components/DisplayInfo';
+import SearchBar from './components/SearchBar'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const Welcome = (props) => {
+  return (  
+    <img className="mt-8" style={{width:'36rem'}} src={greeting} alt="Obi-Wan saying 'Hello There'" />
+    );
+  } 
+  
+  function App() {
+    const [searchData, setSearchData] = useState(null);
+    
+    const newDataSearched = (newSearch) => {
+      setSearchData(newSearch);
+    }
+
+    return (
+    <div className="p-16 text-xl">
+      <SearchBar onSearch={ newDataSearched }/>
+      <Routes>
+        <Route path='/' element={<Welcome />}/>
+        <Route path='/:category/:id' element={<DisplayInfo SearchData={ searchData }/>}/>
+      </Routes>
     </div>
   );
 }

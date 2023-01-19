@@ -1,4 +1,4 @@
-const Joke = require('../models/joke.model');
+const Joke = require('../models/jokes.model');
 
 module.exports.findAllJokes = (req, res) => {
     Joke.find()
@@ -14,6 +14,16 @@ module.exports.findOneSingleJoke = (req, res) => {
     Joke.findOne({ _id: req.params.id })
         .then(oneSingleJoke => {
             res.json({ joke: oneSingleJoke })
+        })
+        .catch((err) => {
+            res.json({ message: 'Something went wrong', error: err })
+        });}
+
+module.exports.findOneRandomJoke = (req, res) => {
+
+    Joke.aggregate([{ $sample: { size: 1 } }])
+        .then(oneRandomJoke => {
+            res.json({ joke: oneRandomJoke })
         })
         .catch((err) => {
             res.json({ message: 'Something went wrong', error: err })

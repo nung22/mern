@@ -1,9 +1,10 @@
-const UserController = require('../controllers/user.controller');
+const JokeController = require('../controllers/jokes.controller');
 
 module.exports = app => {
-    app.get('/api/users', UserController.findAllUsers);
-    app.get('/api/users/:id', UserController.findOneSingleUser);
-    app.put('/api/users/:id', UserController.updateExistingUser);
-    app.post('/api/users', UserController.createNewUser);
-    app.delete('/api/users/:id', UserController.deleteAnExistingUser);
+    app.get('/api/jokes', JokeController.findAllJokes);
+    app.post('/api/jokes/new', JokeController.createNewJoke);
+    app.get('/api/jokes/random', JokeController.findOneRandomJoke);
+    app.get('/api/jokes/:id', JokeController.findOneSingleJoke);
+    app.put('/api/jokes/:id', JokeController.updateExistingJoke);
+    app.delete('/api/jokes/:id', JokeController.deleteAnExistingJoke);
 }

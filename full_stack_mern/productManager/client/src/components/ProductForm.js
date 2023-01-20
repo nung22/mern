@@ -39,7 +39,7 @@ export default function ProductForm() {
       <label className="label">
         <span className="label-text">Price</span>
       </label>
-      <input type="number" step={.01} placeholder="0.00" className="input input-bordered w-full max-w-xs"
+      <input type="number" step={0.01} min={0.00} placeholder="0.00" className="input input-bordered w-full max-w-xs"
       onChange={e => setPrice(e.target.value)} value={price}/>
     </div>
     <div className="form-control">
@@ -49,7 +49,9 @@ export default function ProductForm() {
       <textarea className="textarea textarea-bordered h-24" placeholder="Type here"
       onChange={e => setDescription(e.target.value)} value={description}></textarea>
     </div>
-    <input className="btn btn-primary btn-sm w-24" type="submit" value="Create"/>
+    <div className="flex justify-center">
+      <input className="btn btn-primary btn-sm w-24" type="submit" value="Create"/>
+    </div>
   </form>
   )
 }

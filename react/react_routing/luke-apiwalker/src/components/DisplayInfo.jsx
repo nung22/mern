@@ -1,10 +1,33 @@
 import { useParams } from "react-router";
-import error from './error.gif';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import error from '../assets/error.gif';
+import { Link } from 'react-router-dom'
 
 
 const DisplayInfo = (props) => {
-  const {category} = useParams();
-  const searchData = props.SearchData;
+  const {category, id} = useParams();
+  const [searchData, setSearchData] = useState(null);
+  const [home, setHome] = useState('');
+
+  useEffect(() => {
+    axios.get(`https://swapi.dev/api/${category}/${id}`)
+      .then(response => {
+        setSearchData(response.data);
+        // console.log(response.data);
+        if(category === 'people') {
+          axios.get(response.data.homeworld)
+          .then(response => {
+            setHome(response.data);
+            // console.log(response.data.name);
+          })
+        }
+      })
+      .catch(err=>{
+        setSearchData(err);
+        // console.log(err);
+      })
+  }, [category, id]);
 
   return ( 
   <div>
@@ -18,8 +41,8 @@ const DisplayInfo = (props) => {
         <p><span className='font-bold text-warning'>Mass (kg): </span>{searchData.mass}</p>
         <p><span className='font-bold text-warning'>Hair Color: </span>{searchData.hair_color}</p>
         <p><span className='font-bold text-warning'>Skin Color: </span>{searchData.skin_color}</p>
-        {/* <Link to={`/${searchData.homeworld.slice(22)}`} className='font-bold text-success'
-        >{home.name}</Link> */}
+        {searchData.homeworld !== undefined && <Link to={`/${searchData.homeworld.slice(22)}`} className='font-bold text-success'
+        >{home.name}</Link>}
       </div>:
     searchData !== null && category === "planets" ?
       <div className='flex flex-col gap-3'>

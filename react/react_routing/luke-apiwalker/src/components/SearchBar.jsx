@@ -1,32 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {
   useNavigate
 } from "react-router-dom";
-import axios from 'axios';
 
 const SearchBar = (props) => {
   const categories = ["films","people","planets","starships","species","vehicles"];
   const [category, setCategory] = useState('');
   const [id, setId] = useState('');
-  const [searchData, setSearchData] = useState(null);
   const navigate = useNavigate();
-  
-  useEffect(() => {
-      axios.get(`https://swapi.dev/api/${category}/${id}`)
-        .then(response => {
-          setSearchData(response.data);
-          console.log(category, id);
-          console.log(response.data);
-        })
-        .catch(err=>{
-          setSearchData(err);
-          console.log(err);
-        })
-  }, [category,id]);
 
   const handleSearch = e => {
     e.preventDefault();
-    props.onSearch(searchData);
     navigate(`/${category}/${id}`)
   }
 

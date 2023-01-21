@@ -33,21 +33,24 @@ export default function ProductForm() {
         <span className="label-text">Title</span>
       </label>
       <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" 
-      onChange={e => setTitle(e.target.value)} value={title}/>
+      onChange={e => setTitle(e.target.value)}/>
     </div>
     <div className="form-control w-full max-w-xs">
       <label className="label">
         <span className="label-text">Price</span>
       </label>
-      <input type="number" step={0.01} min={0.00} placeholder="0.00" className="input input-bordered w-full max-w-xs"
-      onChange={e => setPrice(e.target.value)} value={price}/>
+      <label className="input-group">
+        <input type="number" step={0.01} min={0.00} placeholder="0.00" className="input input-bordered w-full max-w-xs"
+        onChange={e => setPrice(e.target.value)}/>
+        <span>USD</span>
+      </label>
     </div>
     <div className="form-control">
       <label className="label">
         <span className="label-text">Description</span>
       </label> 
       <textarea className="textarea textarea-bordered h-24" placeholder="Type here"
-      onChange={e => setDescription(e.target.value)} value={description}></textarea>
+      onChange={e => setDescription(e.target.value)}></textarea>
     </div>
     <div className="flex justify-center">
       <input className="btn btn-primary btn-sm w-24" type="submit" value="Create"/>

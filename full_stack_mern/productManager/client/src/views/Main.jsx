@@ -16,12 +16,16 @@ export default function Main() {
       .catch(err => console.error(err));
   }, [products]);
 
+  const removeFromDOM = productId => {
+    setProducts(products.filter(product => product._id !== productId))
+  }
+
   return (
     <div>
       <h1 className='text-center text-2xl font-semibold'>Product Manager</h1>
       <ProductForm/>
       <hr className='my-8'/>
-      {loaded && <ProductList products={products} />}
+      {loaded && <ProductList products={products} removeFromDOM={removeFromDOM} />}
     </div>
   )
 }

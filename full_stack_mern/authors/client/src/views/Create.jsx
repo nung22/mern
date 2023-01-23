@@ -1,26 +1,15 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import AuthorForm from "../components/AuthorForm";
 
-export default function Update() {
-  const { id } = useParams();
-  const [author, setAuthor] = useState();
-  const [loaded, setLoaded] = useState(false);
-  const [errors, setErrors] = useState([]); 
+export default function Create() {
   const navigate = useNavigate();
+  const [errors, setErrors] = useState([]); 
 
-  useEffect(() => {
-    axios.get(`http://localhost:8000/api/authors/${id}`)
-      .then((res) => {
-        setAuthor(res.data);
-        setLoaded(true);
-      });
-    }, [id]);
-    
-    const updateAuthor = author => {
-      axios
-      .put(`http://localhost:8000/api/authors/${id}`, author)
+  const createAuthor = author => {
+    axios
+      .post(`http://localhost:8000/api/authors/new`, author)
       .then((res) => {
         console.log(res);
         navigate('/');
@@ -35,20 +24,14 @@ export default function Update() {
         // Set Errors
         setErrors(errorArr);
       });
-    };
+  };
 
   return (
     <div>
       {errors.map((err, index) => 
       <p className="text-white bg-red-500 px-3 py-1 rounded-lg mb-2 text-xs" key={index}>{err}</p>
       )}
-      {loaded && (
-        <AuthorForm
-          onSubmitProp={updateAuthor}
-          initialName={author.name}
-          formName="Edit this author"
-        />
-      )}
+      <AuthorForm onSubmitProp={createAuthor} initialName="" formName="Add a new author"/>
     </div>
   );
 };

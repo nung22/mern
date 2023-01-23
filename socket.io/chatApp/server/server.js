@@ -1,5 +1,5 @@
 // server.js
-import express from 'express';
+const express = require('express');
 const app = express();
 
 const server = app.listen(8000, () =>
@@ -13,13 +13,10 @@ const io = require('socket.io')(server, { cors: true });
 
 io.on("connection", socket => {
   // NOTE: Each client that connects gets their own socket id!
-  console.log(socket.id);
-
-  socket.on("event_from_client", data => {
-    // socket.broadcast will emit to all other clients beside the
-    // client who is actually emitting
-    socket.broadcast.emit("send_data_to_all_other_clients", data);
-  });
+  console.log(socket.id, '\n', 
+  "Nice to meet you. (Shake Hand)");
+  // socket.emit will emit directly to 'this' specific client
+  socket.emit("message", `Socket.io is up and running! Your socket ID is: ${socket.id}`);
 });
 
 

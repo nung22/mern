@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-
 import './App.css';
+import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
+import { Route, Routes, Navigate } from 'react-router-dom'
+import Main from './views/Main';
 
 function App() {
   // notice that we pass a callback function to initialize the socket
@@ -21,8 +22,12 @@ function App() {
   }, []);
 
   return (
-    <div className="App p-8 flex justify-center">
-      <h1>Socket Test</h1>
+    <div className="App p-8 flex flex-col items-center justify-center">
+      <h1 className='text-center text-3xl font-bold mb-10'>MERN Chat</h1>
+      <Routes>
+        <Route path="/" element={<Navigate to="/home"/>}/>
+        <Route element={<Main/>} path="/home" />
+      </Routes>
     </div>
   );
 }

@@ -11,7 +11,9 @@ const app = express();
 
 require('./config/mongoose.config');
 app.use(cors());
+// allows express to recognize incoming Request Objects as JSON Objects
 app.use(express.json());
+// allows express to recognize the incoming Request Object as strings or arrays
 app.use(express.urlencoded({ extended: true }));
 // Adds all the product routes with this url prepended to them.
 // If we had another model, we'd do the same with that model's routes.

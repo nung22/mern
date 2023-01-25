@@ -35,25 +35,9 @@ const handleDeleteAuthorById = async (req, res) => {
   }
 };
 
-const handleUpdateAuthorById = async (req, res) => {
-  try {
-    const updatedAuthor = await Author.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      {
-        // re-run our validations
-        runValidators: true,  
-      }
-    );
-    return res.json(updatedAuthor);
-  } catch (err) {
-    return res.status(400).json(err);
-  }
-};
-
 // const handleUpdateAuthorById = async (req, res) => {
 //   try {
-//     const updatedAuthor = await updateAuthorById(
+//     const updatedAuthor = await Author.findByIdAndUpdate(
 //       req.params.id,
 //       req.body,
 //       {
@@ -66,6 +50,18 @@ const handleUpdateAuthorById = async (req, res) => {
 //     return res.status(400).json(err);
 //   }
 // };
+
+const handleUpdateAuthorById = async (req, res) => {
+  try {
+    const updatedAuthor = await updateAuthorById(
+      req.params.id,
+      req.body,
+    );
+    return res.json(updatedAuthor);
+  } catch (err) {
+    return res.status(400).json(err);
+  }
+};
 
 module.exports = {
   handleCreateAuthor,

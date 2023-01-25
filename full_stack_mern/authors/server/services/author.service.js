@@ -10,18 +10,23 @@ const getAllAuthors = async () => {
   return authors;
 };
 
-const getAuthorById = async (data) => {
-  const author = await Author.findById(data);
+const getAuthorById = async (authorId) => {
+  const author = await Author.findById(authorId);
   return author;
 };
 
-const deleteAuthorById = async (data) => {
-  const deletedAuthor = await Author.findByIdAndDelete(data);
+const deleteAuthorById = async (authorId) => {
+  const deletedAuthor = await Author.findByIdAndDelete(authorId);
   return deletedAuthor;
 };
 
-const updateAuthorById = async (data) => {
-  const updatedAuthor = await Author.findByIdAndUpdate(data);
+const updateAuthorById = async (authorId, data) => {
+  const updatedAuthor = await Author.findByIdAndUpdate(authorId, data, 
+      {
+        // re-run our validations
+        runValidators: true,  
+      }
+      );
   return updatedAuthor;
 };
 

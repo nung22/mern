@@ -15,6 +15,10 @@ export default function Update() {
       .then((res) => {
         setAuthor(res.data);
         setLoaded(true);
+      })
+      .catch( (err) => {
+        navigate('/errors')
+        console.log(err)
       });
     }, [id]);
     

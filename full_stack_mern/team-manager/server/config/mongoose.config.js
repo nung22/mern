@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const DB_NAME = 'example_db';
+const DB_NAME = 'player_db';
 
 // creates db
 mongoose.connect(`mongodb://localhost/${DB_NAME}`, {
